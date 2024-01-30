@@ -14,28 +14,21 @@
     color: var(--main-color);
 }
 
-/*header {
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    width: 95%;
-    z-index: 1;
-    background-color: white;
-}*/
 
-body {
-    max-width: 1440px;
-    min-width: 1024px;
+body { 
     margin: auto;
-    display: flex;
-    justify-content: center;
-    /*margin-top: 80px;*/
 }
 
 .main-container {
     width: 100%;
-    padding: 0 50px;
+    padding: 0 5%;
     box-sizing: border-box;
+}
+
+.screenSize {
+    max-width: 1440px;
+    min-width: 480px;
+    margin: auto;
 }
 
 footer {
@@ -70,17 +63,11 @@ footer {
     color: var(--main-bg-color)
 }
 
-.directionRow {
-	display: flex;
-	flex-direction: row;
-    flex-wrap: nowrap;
-	justify-content: center;
-}
 
 /******* Header *******/
 .logo {
     width: 61px;
-    padding-right: 50px;
+    padding-right: 10px;
     padding-top: 30px;
     padding-bottom: 30px;
 }
@@ -165,31 +152,38 @@ footer {
     margin-right: 10px
 }
 
-.filter-container a {
+.filterbtn-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.filterbtn-container .filterbtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 19px;
+    padding-right: 19px;
+    height: 50px;
     color: black;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
     background-color: white;
     border: 2px solid var(--second-bg-color);
     border-radius: 100px;
-    font-size: 17px;
-    font-weight: bold;
-    padding-left: 19px;
-    padding-right: 19px;
-    margin-right: 15px;
-    height: 50px;
-    text-decoration: none;
-    line-height: 47px;
 }
 
-.filter-container a > img, .filter-container a span {
+.filterbtn-container .filterbtn > img, .filterbtn-container .filterbtn span {
     vertical-align: middle;
 
 }   
 
-.filter-container a span {
+.filterbtn-container .filterbtn span {
     line-height: 0px;
 }
 
-.filter-container a:hover {
+.filterbtn-container .filterbtn:hover {
     background-color: var(--filter-bg-color);
 }
 
@@ -230,8 +224,9 @@ footer {
 }
 
 .accommodation-and-popular {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2em;
 }
 
 .accommodation-and-popular section {
@@ -244,12 +239,14 @@ footer {
 
 
 /******* Accommodation *******/
-.accommodation {
-    width: 65%;
+.accommodation h2 {
+    padding-bottom: 10px;
 }
 
-.accommodation h2 {
-    padding-left: 18px;
+.accommodation-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
 }
 
 .accommodation-cards .card-title {
@@ -286,16 +283,7 @@ footer {
     box-sizing: border-box;
 }
 
-.accommodation-cards .card {
-    margin-top: 30px;
-    margin-left: 15px;
-    margin-right: 15px;
-    width: 33%;
-}
-
 .showMore a {
-    /*margin-top: 30px;*/
-    /*margin-bottom: 15px;*/
     padding-left: 18px;
     color: black;
     text-decoration: none;
@@ -308,10 +296,6 @@ footer {
 
 
 /******* Popular *******/
-.popular {
-    width: 32%;
-}
-
 .popular-title {
     display: flex;
     justify-content: space-between;
@@ -374,6 +358,12 @@ footer {
     padding: 17px 19px 20px 19px;
 }
 
+.activites-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
 .activites-cards img {
     width: 100%;
     height: 380px;
@@ -382,8 +372,6 @@ footer {
 }
 
 .activites-cards .card {
-    width: 22%;
-    margin: 0px 15px;
     padding: 0px;
 }
 
@@ -394,22 +382,75 @@ footer h3 {
     margin: 0px;
 }
 
+footer a {
+    color: black;
+    text-decoration: none;
+}
+
 footer p {
     margin-top: 15px;
     margin-bottom: 0px;
 }
 
-.about {
-    width: 33%;
-    margin: 20px;
+.footerContent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
-.ourAccom {
-    width: 33%;
-    margin: 20px;
+.about, .ourAccom, .support {
+    margin: 15px auto;
 }
 
-.support {
-    width: 33%;
-    margin: 20px;
+
+@media screen and (max-width: 1200px) {
+
+    .accommodation-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .activites-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
+
+
+@media screen and (max-width: 1024px) {
+    .filter-container {
+        flex-direction: column;
+    }   
+    .filterbtn-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }   
+}
+
+
+@media screen and (max-width: 820px) {
+    .accommodation-and-popular {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+    }
+}
+
+
+@media screen and (max-width: 620px) {
+
+    .accommodation-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .activites-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .footerContent {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px
+    }
+
+    .about, .ourAccom, .support {
+        text-align: center;
+    }
+}
+
